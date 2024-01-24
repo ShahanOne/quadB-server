@@ -34,7 +34,10 @@ app.get('/', async (req, res) => {
     }
     // await Info.insertMany(dataArray);
 
-    res.json(Object.fromEntries(dataArray));
+    const dataFromDb = await Info.find({});
+
+    res.json(dataFromDb);
+    // res.json(Object.fromEntries(dataArray));
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: 'Internal Server Error' });
