@@ -5,6 +5,14 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 require('mongoose-type-url');
 mongoose.set('strictQuery', false);
+const cors = require('cors');
+const corsOptions = {
+  origin: '*',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 //Connection
 mongoose.connect(process.env.MONGODB_URI);
